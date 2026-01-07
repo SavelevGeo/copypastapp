@@ -7,8 +7,16 @@
 ### Steps=branches:
 - [x] `docs/roadmap` the changes to the current file
 - [x] `fix/wm-height` the page shows extra size after hiding and showing back navigation bar (vh -> dvh)
+- [ ] `feat/items-list` move the items to a variable, so the attributes are easily accessible, and then saved as a **project**
 - [ ] `feat/notification-design` the toast container appears under the top bar on mobile, the design should be more compact
 - [ ] `fix/tm-external-links` neither http nor https links are working (open in external app)
 - [ ] `feat/projects` add the functionality of other lists of things to copied
 - [ ] `feat/nfc-read-card-num` add the functionality of reading card number by touching the card by NFC
 - [ ] `feat/ocr-read-card-num` add the functionality of reading card number by using device camera / image
+
+
+```mermaid
+graph TD;
+    feat/items-list-->feat/notification-design;
+    feat/items-list-->feat/projects;
+```
