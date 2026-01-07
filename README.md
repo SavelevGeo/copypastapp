@@ -1,8 +1,8 @@
 ## Roadmap
 
-### Branch prefix:
-w/t/ website/tauri/all
-m/d/ mobile/desktop/all
+### Branch prefix (separated by `-`). The letters/absence stand for:
+1. `w/t/` `website/tauri/all`
+1. `m/d/` `mobile/desktop/all`
 
 ### Steps=branches:
 - [x] fix/wm-height
