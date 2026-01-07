@@ -5,7 +5,7 @@
 1. `m/d/` `mobile/desktop/all`
 
 ### Steps=branches:
-- [ ] `docs/roadmap` the changes to the current file
+- [x] `docs/roadmap` the changes to the current file
 - [x] `fix/wm-height` the page shows extra size after hiding and showing back navigation bar (vh -> dvh)
 - [ ] `feat/notification-design` the toast container appears under the top bar on mobile, the design should be more compact
 - [ ] `fix/tm-external-links` neither http nor https links are working (open in external app)
