@@ -7,7 +7,7 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
 -->
 
 
-        <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+        <div class="d-flex flex-column justify-content-center align-items-center dvh-100">
             <header class="border-bottom">
                 <div class="container text-center py-3">
                     <a href="/" class="text-dark text-decoration-none">
@@ -64,3 +64,9 @@ function copyToClipboard(event: MouseEvent): void {
         })
 }
 </script>
+
+<style>
+.dvh-100 {
+    height: 100dvh;
+}
+</style>
