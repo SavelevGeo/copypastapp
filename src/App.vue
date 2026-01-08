@@ -16,7 +16,7 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
                 </div>
             </header>
             <template v-for="projectItem in currentProject.items">
-                <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button" @click.prevent="copyToClipboard"
+		    <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button" @click.prevent="() => copyToClipboard(projectItem, currentLocale)"
                     :data-text="projectItem.copyText[currentLocale]"><i class="bi bi-copy me-2"></i>{{
                         projectItem.displayText[currentLocale] }}</a>
                 <a v-if="projectItem.redirect" :href="projectItem.copyText[currentLocale]" class="btn mt-5"
@@ -102,30 +102,10 @@ const showToast = ref(false)
 const toastTitle = ref('')
 const toastMessage = ref('')
 
-function copyToClipboard(event: MouseEvent): void {
-    const button = event.currentTarget as HTMLButtonElement;
-    const text = button.getAttribute('data-text');
-
-    if (!text) {
-        toastTitle.value = 'Error'
-        toastMessage.value = 'No text to copy'
-        showToast.value = true
-        return
-    };
-
-    navigator.clipboard.writeText(text)
-        .then(() => {
-            toastTitle.value = 'Success. Copied';
-            toastMessage.value = text;
-            showToast.value = true;
-        })
-        .catch((err: Error) => {
-            toastTitle.value = 'Error'
-            toastMessage.value = 'Failed to copy'
-            console.error('Failed to copy:', err)
-            showToast.value = true
-        })
+function copyToClipboard(item: ProjectItem, currentLocale: string): void {
+    navigator.clipboard.writeText(item.copyText[currentLocale]);
 }
+
 </script>
 
 <style>
