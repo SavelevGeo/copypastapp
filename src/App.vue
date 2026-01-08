@@ -10,32 +10,31 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
         <div class="d-flex flex-column justify-content-center align-items-center dvh-100">
             <header class="border-bottom">
                 <div class="container text-center py-3">
-                    <a href="/" class="text-dark text-decoration-none">
-                        <span>{{ currentProject.name[currentLocale] }}</span>
+                    <a href="#" class="btn text-dark text-decoration-none" @click.prevent="resetIsCopied(currentProject.items)">
+                        <i
+                            :class="['bi', 'pe-1', 'bi-arrow-clockwise', !currentProject.items.some(item => item.isCopied) ? 'text-white' : '']"></i>
+                        <span>{{ currentProject.name[currentLocale]
+                        }}</span>
                     </a>
                 </div>
             </header>
             <template v-for="projectItem in currentProject.items">
-                <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button" @click.prevent="copyToClipboard"
-                    :data-text="projectItem.copyText[currentLocale]"><i class="bi bi-copy me-2"></i>{{
-                        projectItem.displayText[currentLocale] }}</a>
+                <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button"
+                    @click.prevent="() => copyToClipboard(projectItem, currentLocale)"
+                    :data-text="projectItem.copyText[currentLocale]"><i
+                        :class="['bi', !projectItem.isCopied ? 'bi-copy' : 'bi-check-square', 'pe-1']"></i>{{
+                            projectItem.displayText[currentLocale]}}</a>
                 <a v-if="projectItem.redirect" :href="projectItem.copyText[currentLocale]" class="btn mt-5"
                     role="button"><i class="bi bi-box-arrow-up-right"></i> {{ projectItem.displayText[currentLocale]
                     }}</a>
             </template>
-        </div>
-
-        <div class="toast-container position-fixed top-0 end-0 p-3">
-            <BToast v-model="showToast" :title="toastTitle">
-                {{ toastMessage }}
-            </BToast>
         </div>
     </BApp>
 </template>
 
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
-import { BApp, BToast } from 'bootstrap-vue-next';
+import { BApp } from 'bootstrap-vue-next';
 
 type Localized<T> = Record<string, T>;
 interface ProjectItem {
@@ -44,6 +43,7 @@ interface ProjectItem {
     copyText: Localized<string>;
     copy: boolean;
     redirect: boolean;
+    isCopied?: boolean;
 }
 interface Project {
     name: Localized<string>;
@@ -98,34 +98,18 @@ const currentProject: Ref<Project> = ref({
     ]
 });
 
-const showToast = ref(false)
-const toastTitle = ref('')
-const toastMessage = ref('')
+function copyToClipboard(item: ProjectItem, currentLocale: string): void {
+    navigator.clipboard.writeText(item.copyText[currentLocale]);
 
-function copyToClipboard(event: MouseEvent): void {
-    const button = event.currentTarget as HTMLButtonElement;
-    const text = button.getAttribute('data-text');
-
-    if (!text) {
-        toastTitle.value = 'Error'
-        toastMessage.value = 'No text to copy'
-        showToast.value = true
-        return
-    };
-
-    navigator.clipboard.writeText(text)
-        .then(() => {
-            toastTitle.value = 'Success. Copied';
-            toastMessage.value = text;
-            showToast.value = true;
-        })
-        .catch((err: Error) => {
-            toastTitle.value = 'Error'
-            toastMessage.value = 'Failed to copy'
-            console.error('Failed to copy:', err)
-            showToast.value = true
-        })
+    item.isCopied = true;
 }
+
+function resetIsCopied(projectItems: ProjectItem[]): void {
+    projectItems.forEach(item => {
+        item.isCopied = false;
+    });
+}
+
 </script>
 
 <style>
