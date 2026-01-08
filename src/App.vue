@@ -23,9 +23,9 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
                     @click.prevent="() => copyToClipboard(projectItem, currentLocale)"
                     :data-text="projectItem.copyText[currentLocale]"><i
                         :class="['bi', !projectItem.isCopied ? 'bi-copy' : 'bi-check-square', 'pe-1']"></i>{{
-                            projectItem.displayText[currentLocale]}}</a>
+                            projectItem.displayText[currentLocale] }}</a>
                 <a v-if="projectItem.redirect" :href="projectItem.copyText[currentLocale]" class="btn mt-5"
-                    role="button"><i class="bi bi-box-arrow-up-right"></i> {{ projectItem.displayText[currentLocale]
+                    role="button"><i class="bi bi-box-arrow-up-right pe-1"></i>{{ projectItem.displayText[currentLocale]
                     }}</a>
             </template>
         </div>
