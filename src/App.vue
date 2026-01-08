@@ -16,9 +16,11 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
                 </div>
             </header>
             <template v-for="projectItem in currentProject.items">
-		    <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button" @click.prevent="() => copyToClipboard(projectItem, currentLocale)"
-                    :data-text="projectItem.copyText[currentLocale]"><i class="bi bi-copy me-2"></i>{{
-                        projectItem.displayText[currentLocale] }}</a>
+                <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button"
+                    @click.prevent="() => copyToClipboard(projectItem, currentLocale)"
+                    :data-text="projectItem.copyText[currentLocale]"><i
+                        :class="['bi', !projectItem.isCopied ? 'bi-copy' : 'bi-check-square', 'pe-1']"></i>{{
+                            projectItem.displayText[currentLocale]}}</a>
                 <a v-if="projectItem.redirect" :href="projectItem.copyText[currentLocale]" class="btn mt-5"
                     role="button"><i class="bi bi-box-arrow-up-right"></i> {{ projectItem.displayText[currentLocale]
                     }}</a>
@@ -38,6 +40,7 @@ interface ProjectItem {
     copyText: Localized<string>;
     copy: boolean;
     redirect: boolean;
+    isCopied?: boolean;
 }
 interface Project {
     name: Localized<string>;
@@ -94,6 +97,8 @@ const currentProject: Ref<Project> = ref({
 
 function copyToClipboard(item: ProjectItem, currentLocale: string): void {
     navigator.clipboard.writeText(item.copyText[currentLocale]);
+
+    item.isCopied = true;
 }
 
 </script>
