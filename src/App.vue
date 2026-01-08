@@ -10,8 +10,11 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
         <div class="d-flex flex-column justify-content-center align-items-center dvh-100">
             <header class="border-bottom">
                 <div class="container text-center py-3">
-                    <a href="/" class="text-dark text-decoration-none">
-                        <span>{{ currentProject.name[currentLocale] }}</span>
+                    <a href="#" class="btn text-dark text-decoration-none" @click.prevent="resetIsCopied(currentProject.items)">
+                        <i
+                            :class="['bi', 'pe-1', 'bi-arrow-clockwise', !currentProject.items.some(item => item.isCopied) ? 'text-white' : '']"></i>
+                        <span>{{ currentProject.name[currentLocale]
+                        }}</span>
                     </a>
                 </div>
             </header>
@@ -99,6 +102,12 @@ function copyToClipboard(item: ProjectItem, currentLocale: string): void {
     navigator.clipboard.writeText(item.copyText[currentLocale]);
 
     item.isCopied = true;
+}
+
+function resetIsCopied(projectItems: ProjectItem[]): void {
+    projectItems.forEach(item => {
+        item.isCopied = false;
+    });
 }
 
 </script>
