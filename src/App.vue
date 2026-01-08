@@ -24,18 +24,12 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
                     }}</a>
             </template>
         </div>
-
-        <div class="toast-container position-fixed top-0 end-0 p-3">
-            <BToast v-model="showToast" :title="toastTitle">
-                {{ toastMessage }}
-            </BToast>
-        </div>
     </BApp>
 </template>
 
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
-import { BApp, BToast } from 'bootstrap-vue-next';
+import { BApp } from 'bootstrap-vue-next';
 
 type Localized<T> = Record<string, T>;
 interface ProjectItem {
@@ -97,10 +91,6 @@ const currentProject: Ref<Project> = ref({
         }
     ]
 });
-
-const showToast = ref(false)
-const toastTitle = ref('')
-const toastMessage = ref('')
 
 function copyToClipboard(item: ProjectItem, currentLocale: string): void {
     navigator.clipboard.writeText(item.copyText[currentLocale]);
