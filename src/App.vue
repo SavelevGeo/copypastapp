@@ -24,7 +24,10 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
                     :data-text="projectItem.copyText[currentLocale]"><i
                         :class="['bi', !projectItem.isCopied ? 'bi-copy' : 'bi-check-square', 'pe-1']"></i>{{
                             projectItem.displayText[currentLocale] }}</a>
-                <a v-if="projectItem.redirect" :href="projectItem.copyText[currentLocale]" class="btn mt-5"
+                <a v-if="projectItem.redirect && isTauri()" href="#" class="btn mt-5"
+                    role="button" @click.prevent="openUrl(projectItem.copyText[currentLocale])"><i class="bi bi-box-arrow-up-right pe-1"></i>{{ projectItem.displayText[currentLocale]
+                    }}</a>
+                <a v-if="projectItem.redirect && !isTauri()" :href="projectItem.copyText[currentLocale]" class="btn mt-5"
                     role="button"><i class="bi bi-box-arrow-up-right pe-1"></i>{{ projectItem.displayText[currentLocale]
                     }}</a>
             </template>
@@ -35,6 +38,8 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
 import { BApp } from 'bootstrap-vue-next';
+import { isTauri } from '@tauri-apps/api/core';
+import { openUrl } from '@tauri-apps/plugin-opener';
 
 type Localized<T> = Record<string, T>;
 interface ProjectItem {
