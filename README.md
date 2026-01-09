@@ -11,7 +11,10 @@
 - [x] `feat/notification-design` the toast container appears under the top bar on mobile, the design should be more compact
 - [ ] `fix/items-list-add-order` make tge order in app respect tge order in the attribute
 - [ ] `fix/tm-external-links` neither http nor https links are working (open in external app)
+- [ ] `feat/settings-menu` add settings. to be set on project level
+- [ ] `feat/locale-switch` add locale switch to the settings
 - [ ] `feat/projects` add the functionality of other lists of things to copied
+- [ ] `feat/display-modes` add the option to display the copyText and a switch controlling that
 - [ ] `feat/nfc-read-card-num` add the functionality of reading card number by touching the card by NFC
 - [ ] `feat/ocr-read-card-num` add the functionality of reading card number by using device camera / image
 
