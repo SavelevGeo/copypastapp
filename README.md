@@ -23,5 +23,6 @@
 - [ ] `feat/projects` add the functionality of other lists of things to copied
 - [ ] `0.2.0`
 ---
+- [ ] `test/add-e2e-tests`
 - [ ] `feat/nfc-read-card-num` add the functionality of reading card number by touching the card by NFC
 - [ ] `feat/ocr-read-card-num` add the functionality of reading card number by using device camera / image
