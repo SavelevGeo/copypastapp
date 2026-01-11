@@ -1,4 +1,4 @@
-# copypastapp 🚀
+# copypastapp
 
 A lightweight, cross-platform application for managing and quickly accessing your frequently used text snippets and links.
 
@@ -7,26 +7,26 @@ A lightweight, cross-platform application for managing and quickly accessing you
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 
-## 📱 Live Demo
+## Live Demo
 
-**Currently in active development** - The web demo at [copypastapp.vercel.app](https://copypastapp.vercel.app) is being stabilized. Follow the development below for the latest updates!
+The web demo at [copypastapp.vercel.app](https://copypastapp.vercel.app)
 
-## ✨ Features
+## Features
 
-### ✅ Currently Implemented (v0.1.1)
+### Currently Implemented (v0.1.1)
 - **Quick Copy Interface**: Tap to copy transport card numbers
 - **Cross-Platform**: Built with Tauri for desktop and mobile compatibility
 - **External Links**: Direct links to top-up pages open in your default browser/app
 - **Responsive Design**: Adapts to mobile and desktop screen sizes
 
-### 🚧 Planned Features (See Roadmap Below)
+### Planned Features (See Roadmap Below)
 - **Multiple Projects**: Organize snippets into different categories/contexts
 - **Display Modes**: Toggle between different views of your data
 - **NFC Integration**: Read transport card numbers by tapping (mobile)
 - **OCR Scanning**: Capture card numbers using your device's camera
 - **Multi-language Support**: Switch between different locales
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Layer | Technology | Purpose |
 |-------|------------|---------|
@@ -36,20 +36,12 @@ A lightweight, cross-platform application for managing and quickly accessing you
 | **Packaging** | Tauri | Cross-platform desktop/mobile builds |
 | **Deployment** | Vercel | Web deployment & hosting |
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+ and npm
 - Rust and Cargo (for Tauri)
 - System dependencies for Tauri: [Follow the official guide](https://tauri.app/v1/guides/getting-started/prerequisites)
-
-### Installation & Development
-
-1. Clone the repository
-   ```bash
-      git clone https://github.com/SavelevGeo/copypastapp.git
-         cd copypastapp
-   ```
 
 ## Roadmap
 
