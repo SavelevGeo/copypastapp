@@ -6,16 +6,19 @@ Posted by Andreas Bergström, modified by community. See post 'Timeline' for cha
 Retrieved 2026-01-03, License - CC BY-SA 4.0
 -->
 
-
-        <div class="d-flex flex-column justify-content-center align-items-center dvh-100">
+	<div class="projects dvh-100 d-flex flex-column justify-content-center align-items-center">
+        <div class="project d-flex flex-column justify-content-center align-items-center">
             <header class="border-bottom">
                 <div class="container text-center py-3">
-                    <a href="#" class="btn text-dark text-decoration-none" @click.prevent="resetIsCopied(currentProject.items)">
+		    <a href="#" class="btn text-dark text-decoration-none" @click.prevent="resetIsCopied(currentProject.items)">
                         <i
-                            :class="['bi', 'pe-1', 'bi-arrow-clockwise', !currentProject.items.some(item => item.isCopied) ? 'text-white' : '']"></i>
-                        <span>{{ currentProject.name[currentLocale]
+                            :class="['bi', 'bi-arrow-clockwise', !currentProject.items.some(item => item.isCopied) ? 'text-white' : '']"></i>
+        	    </a>
+                    <span>{{ currentProject.name[currentLocale]
                         }}</span>
-                    </a>
+		    <a href="#" class="btn">
+			    <i class="bi bi-gear"></i>
+		    </a>
                 </div>
             </header>
 	    <template v-for="projectItem in currentProject.items.sort((a, b) => a.order[currentLocale] - b.order[currentLocale])">
@@ -32,6 +35,7 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
                     }}</a>
             </template>
         </div>
+	</div>
     </BApp>
 </template>
 
