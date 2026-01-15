@@ -16,7 +16,7 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
         	    </a>
                     <span>{{ currentProject.name[currentLocale]
                         }}</span>
-		    <input type="checkbox" class="btn-check" id="settings" checked autocomplete="off">
+		    <input type="checkbox" class="btn-check" id="settings" v-model="currentProject.settingsShown" autocomplete="off">
                     <label class="btn" for="settings">
 			    <i class="bi bi-gear"></i>
 		    </label>
@@ -58,6 +58,7 @@ interface ProjectItem {
 interface Project {
     name: Localized<string>;
     items: ProjectItem[];
+    settingsShown?: boolean;
 }
 
 const currentLocale: Ref<string> = ref('ru');
