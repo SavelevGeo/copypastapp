@@ -18,7 +18,7 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
                     </a>
                 </div>
             </header>
-	    <template v-for="projectItem in currentProject.items.toSorted((a, b) => a.order[currentLocale] - b.order[currentLocale])">
+	    <template v-for="projectItem in currentProject.items.sort((a, b) => a.order[currentLocale] - b.order[currentLocale])">
                 <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button"
                     @click.prevent="() => copyToClipboard(projectItem, currentLocale)"
                     :data-text="projectItem.copyText[currentLocale]"><i
