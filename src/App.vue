@@ -12,7 +12,7 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
                 <div class="container text-center py-3">
 		    <a href="#" class="btn text-dark text-decoration-none" @click.prevent="resetIsCopied(currentProject.items)">
                         <i
-                            :class="['bi', 'bi-arrow-clockwise', !currentProject.items.some(item => item.isCopied) ? 'text-white' : '']"></i>
+                            class="bi bi-arrow-clockwise"></i>
         	    </a>
                     <span>{{ currentProject.name[currentLocale]
                         }}</span>
