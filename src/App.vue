@@ -16,9 +16,10 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
         	    </a>
                     <span>{{ currentProject.name[currentLocale]
                         }}</span>
-		    <a href="#" class="btn">
+		    <input type="checkbox" class="btn-check" id="settings" checked autocomplete="off">
+                    <label class="btn" for="settings">
 			    <i class="bi bi-gear"></i>
-		    </a>
+		    </label>
                 </div>
             </header>
 	    <template v-for="projectItem in currentProject.items.sort((a, b) => a.order[currentLocale] - b.order[currentLocale])">
