@@ -23,7 +23,10 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
                     </div>
                 </header>
                 <BCollapse v-model="currentProject.settingsShown">
-                    Settings
+                    <div class="container text-center pt-3 form-check form-switch">
+                        <input type="checkbox" name="show-copy-text" id="show-copy-text" class="form-check-input" >
+                        <label for="show-copy-text" class="form-check-label">show text to copy</label>
+                    </div>
                 </BCollapse>
                 <template
                     v-for="projectItem in currentProject.items.sort((a, b) => a.order[currentLocale] - b.order[currentLocale])">
