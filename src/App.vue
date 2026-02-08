@@ -6,37 +6,41 @@ Posted by Andreas Bergström, modified by community. See post 'Timeline' for cha
 Retrieved 2026-01-03, License - CC BY-SA 4.0
 -->
 
-	<div class="projects dvh-100 d-flex flex-column justify-content-center align-items-center">
-        <div class="project d-flex flex-column justify-content-center align-items-center">
-            <header class="border-bottom">
-                <div class="container text-center py-3">
-		    <a href="#" class="btn text-dark text-decoration-none" @click.prevent="resetIsCopied(currentProject.items)">
-                        <i
-                            class="bi bi-arrow-clockwise"></i>
-        	    </a>
-                    <span>{{ currentProject.name[currentLocale]
-                        }}</span>
-		    <input type="checkbox" class="btn-check" id="settings" v-model="currentProject.settingsShown" autocomplete="off">
-                    <label class="btn" for="settings">
-			    <i class="bi bi-gear"></i>
-		    </label>
-                </div>
-            </header>
-	    <template v-for="projectItem in currentProject.items.sort((a, b) => a.order[currentLocale] - b.order[currentLocale])">
-                <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button"
-                    @click.prevent="() => copyToClipboard(projectItem, currentLocale)"
-                    :data-text="projectItem.copyText[currentLocale]"><i
-                        :class="['bi', !projectItem.isCopied ? 'bi-copy' : 'bi-check-square', 'pe-1']"></i>{{
-                            projectItem.displayText[currentLocale] }}</a>
-                <a v-if="projectItem.redirect && isTauri()" href="#" class="btn mt-5"
-                    role="button" @click.prevent="openUrl(projectItem.copyText[currentLocale])"><i class="bi bi-box-arrow-up-right pe-1"></i>{{ projectItem.displayText[currentLocale]
-                    }}</a>
-                <a v-if="projectItem.redirect && !isTauri()" :href="projectItem.copyText[currentLocale]" class="btn mt-5"
-                    role="button"><i class="bi bi-box-arrow-up-right pe-1"></i>{{ projectItem.displayText[currentLocale]
-                    }}</a>
-            </template>
+        <div class="projects dvh-100 d-flex flex-column justify-content-center align-items-center">
+            <div class="project d-flex flex-column justify-content-center align-items-center">
+                <header class="border-bottom">
+                    <div class="container text-center py-3">
+                        <a href="#" class="btn text-dark text-decoration-none"
+                            @click.prevent="resetIsCopied(currentProject.items)">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </a>
+                        <span>{{ currentProject.name[currentLocale] }}</span>
+                        <input type="checkbox" class="btn-check" id="settings" v-model="currentProject.settingsShown"
+                            autocomplete="off">
+                        <label class="btn" for="settings">
+                            <i class="bi bi-gear"></i>
+                        </label>
+
+                    </div>
+                </header>
+                <template
+                    v-for="projectItem in currentProject.items.sort((a, b) => a.order[currentLocale] - b.order[currentLocale])">
+                    <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button"
+                        @click.prevent="() => copyToClipboard(projectItem, currentLocale)"
+                        :data-text="projectItem.copyText[currentLocale]"><i
+                            :class="['bi', !projectItem.isCopied ? 'bi-copy' : 'bi-check-square', 'pe-1']"></i>{{
+                                projectItem.displayText[currentLocale] }}</a>
+                    <a v-if="projectItem.redirect && isTauri()" href="#" class="btn mt-5" role="button"
+                        @click.prevent="openUrl(projectItem.copyText[currentLocale])"><i
+                            class="bi bi-box-arrow-up-right pe-1"></i>{{ projectItem.displayText[currentLocale]
+                            }}</a>
+                    <a v-if="projectItem.redirect && !isTauri()" :href="projectItem.copyText[currentLocale]"
+                        class="btn mt-5" role="button"><i class="bi bi-box-arrow-up-right pe-1"></i>{{
+                            projectItem.displayText[currentLocale]
+                        }}</a>
+                </template>
+            </div>
         </div>
-	</div>
     </BApp>
 </template>
 
