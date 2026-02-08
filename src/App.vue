@@ -20,9 +20,11 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
                         <label class="btn" for="settings">
                             <i class="bi bi-gear"></i>
                         </label>
-
                     </div>
                 </header>
+                <BCollapse v-model="currentProject.settingsShown">
+                    Settings
+                </BCollapse>
                 <template
                     v-for="projectItem in currentProject.items.sort((a, b) => a.order[currentLocale] - b.order[currentLocale])">
                     <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button"
@@ -46,7 +48,7 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
 
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
-import { BApp } from 'bootstrap-vue-next';
+import { BApp, BCollapse } from 'bootstrap-vue-next';
 import { isTauri } from '@tauri-apps/api/core';
 import { openUrl } from '@tauri-apps/plugin-opener';
 
