@@ -10,14 +10,14 @@ Retrieved 2026-01-03, License - CC BY-SA 4.0
             <div class="project d-flex flex-column justify-content-center align-items-center">
                 <header class="border-bottom">
                     <div class="container text-center py-3">
-                        <a href="#" class="btn text-dark text-decoration-none"
+                        <a href="#" class="btn text-dark text-decoration-none px-2 mx-1"
                             @click.prevent="resetIsCopied(currentProject.items)">
-                            <i class="bi bi-arrow-clockwise"></i>
+                            <i class="bi bi-arrow-clockwise "></i>
                         </a>
                         <span>{{ currentProject.name[currentLocale] }}</span>
                         <input type="checkbox" class="btn-check" id="settings" v-model="currentProject.settingsShown"
                             autocomplete="off">
-                        <label class="btn" for="settings">
+                        <label class="btn px-2 mx-1" for="settings">
                             <i class="bi bi-gear"></i>
                         </label>
                     </div>
