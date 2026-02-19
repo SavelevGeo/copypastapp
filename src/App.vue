@@ -8,7 +8,7 @@
                             @click.prevent="resetIsCopied(currentProject.items)">
                             <i class="bi bi-arrow-clockwise "></i>
                         </a>
-                        <span>{{ currentProject.name[currentLocale] }}</span>
+                        <span>{{ currentProject.name[currentProject.locale] }}</span>
                         <input type="checkbox" class="btn-check" id="settings" v-model="currentProject.settingsShown"
                             autocomplete="off">
                         <label class="btn px-2 mx-1" for="settings">
@@ -23,19 +23,19 @@
                     </div>
                 </BCollapse>
                 <template
-                    v-for="projectItem in currentProject.items.sort((a, b) => a.order[currentLocale] - b.order[currentLocale])">
+                    v-for="projectItem in currentProject.items.sort((a, b) => a.order[currentProject.locale] - b.order[currentProject.locale])">
                     <a v-if="projectItem.copy" href="#" class="btn mt-5" role="button"
-                        @click.prevent="() => copyToClipboard(projectItem, currentLocale)"
-                        :data-text="projectItem.copyText[currentLocale]"><i
+                        @click.prevent="() => copyToClipboard(projectItem, currentProject.locale)"
+                        :data-text="projectItem.copyText[currentProject.locale]"><i
                             :class="['bi', !projectItem.isCopied ? 'bi-copy' : 'bi-check-square', 'pe-1']"></i>{{
-                                projectItem.displayText[currentLocale] }}</a>
+                                projectItem.displayText[currentProject.locale] }}</a>
                     <a v-if="projectItem.redirect && isTauri()" href="#" class="btn mt-5" role="button"
-                        @click.prevent="openUrl(projectItem.copyText[currentLocale])"><i
-                            class="bi bi-box-arrow-up-right pe-1"></i>{{ projectItem.displayText[currentLocale]
+                        @click.prevent="openUrl(projectItem.copyText[currentProject.locale])"><i
+                            class="bi bi-box-arrow-up-right pe-1"></i>{{ projectItem.displayText[currentProject.locale]
                             }}</a>
-                    <a v-if="projectItem.redirect && !isTauri()" :href="projectItem.copyText[currentLocale]"
+                    <a v-if="projectItem.redirect && !isTauri()" :href="projectItem.copyText[currentProject.locale]"
                         class="btn mt-5" role="button"><i class="bi bi-box-arrow-up-right pe-1"></i>{{
-                            projectItem.displayText[currentLocale]
+                            projectItem.displayText[currentProject.locale]
                         }}</a>
                 </template>
             </div>
@@ -62,13 +62,14 @@ interface Project {
     name: Localized<string>;
     items: ProjectItem[];
     settingsShown?: boolean;
+    locale: string;
 }
 
-const currentLocale: Ref<string> = ref('ru');
 const currentProject: Ref<Project> = ref({
     name: {
         'ru': 'Пополнить подорожник',
     },
+    locale: 'ru',
     items: [
         {
             order: {
@@ -112,8 +113,8 @@ const currentProject: Ref<Project> = ref({
     ]
 });
 
-function copyToClipboard(item: ProjectItem, currentLocale: string): void {
-    navigator.clipboard.writeText(item.copyText[currentLocale]);
+function copyToClipboard(item: ProjectItem, locale: string): void {
+    navigator.clipboard.writeText(item.copyText[locale]);
 
     item.isCopied = true;
 }
