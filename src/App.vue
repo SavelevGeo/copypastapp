@@ -1,11 +1,5 @@
 <template>
     <BApp>
-        <!--
-Source - https://stackoverflow.com/a/44130105
-Posted by Andreas Bergström, modified by community. See post 'Timeline' for change history
-Retrieved 2026-01-03, License - CC BY-SA 4.0
--->
-
         <div class="projects dvh-100 d-flex flex-column justify-content-center align-items-center">
             <div class="project d-flex flex-column justify-content-center align-items-center">
                 <header class="border-bottom">
