@@ -17,10 +17,16 @@
                     </div>
                 </header>
                 <BCollapse v-model="currentProject.settingsShown">
-                    <div class="container text-center pt-3 form-check form-switch">
+                    <!--div class="container text-center pt-3 form-check form-switch">
                         <input type="checkbox" name="show-copy-text" id="show-copy-text" class="form-check-input" >
                         <label for="show-copy-text" class="form-check-label">show text to copy</label>
-                    </div>
+                    </div-->
+		<BFormRadioGroup
+	             v-model="currentProject.locale"
+                     :options="currentProject.localeOptions"
+		      buttons
+		      button-variant="outline-primary"
+		      class="pt-3"></BFormRadioGroup>
                 </BCollapse>
                 <template
                     v-for="projectItem in currentProject.items.sort((a, b) => a.order[currentProject.locale] - b.order[currentProject.locale])">
@@ -49,7 +55,13 @@ import { BApp, BCollapse } from 'bootstrap-vue-next';
 import { isTauri } from '@tauri-apps/api/core';
 import { openUrl } from '@tauri-apps/plugin-opener';
 
+import { BFormRadioGroup } from 'bootstrap-vue-next';
+
 type Localized<T> = Record<string, T>;
+interface LocaleOption {
+    text: string;
+    value: string;
+}
 interface ProjectItem {
     order: Localized<number>;
     displayText: Localized<string>;
@@ -62,7 +74,9 @@ interface Project {
     name: Localized<string>;
     items: ProjectItem[];
     settingsShown?: boolean;
+    copyTextShown?: boolean;
     locale: string;
+    localeOptions: LocaleOption[];
 }
 
 const currentProject: Ref<Project> = ref({
@@ -70,6 +84,12 @@ const currentProject: Ref<Project> = ref({
         'ru': 'Пополнить подорожник',
     },
     locale: 'ru',
+    localeOptions: [
+	{
+	    text: 'ru',
+            value: 'ru'
+	}
+    ],
     items: [
         {
             order: {
