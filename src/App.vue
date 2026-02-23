@@ -23,7 +23,7 @@
                     </div-->
 		<BFormRadioGroup
 	             v-model="currentProject.locale"
-                     :options="currentProject.localeOptions"
+                     :options="currentProject.localeOptions as RadioOptionRaw[]"
 		      buttons
 		      button-variant="outline-primary"
 		      class="pt-3"></BFormRadioGroup>
@@ -56,6 +56,7 @@ import { isTauri } from '@tauri-apps/api/core';
 import { openUrl } from '@tauri-apps/plugin-opener';
 
 import { BFormRadioGroup } from 'bootstrap-vue-next';
+import type { RadioOptionRaw } from 'bootstrap-vue-next';
 
 type Localized<T> = Record<string, T>;
 interface LocaleOption {
