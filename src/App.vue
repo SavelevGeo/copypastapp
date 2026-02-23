@@ -82,50 +82,64 @@ interface Project {
 const currentProject: Ref<Project> = ref({
     name: {
         'ru': 'Пополнить подорожник',
+        'en': 'Top up podorzhnik',
     },
     locale: 'ru',
     localeOptions: [
-	{
-	    text: 'ru',
+        {
+            text: 'ru',
             value: 'ru'
-	}
+        },
+        {
+            text: 'en',
+            value: 'en'
+        }
     ],
     items: [
         {
             order: {
-                'ru': 1
+                'ru': 1,
+                'en': 1
             },
             displayText: {
                 'ru': 'Гошин',
+                'en': 'Goshin'
             },
             copyText: {
-                'ru': '96433078361620599568105003'
+                'ru': '96433078361620599568105003',
+                'en': '96433078361620599568105003'
             },
             copy: true,
             redirect: false
         },
         {
             order: {
-                'ru': 2
+                'ru': 2,
+                'en': 2
             },
             displayText: {
                 'ru': 'Ксюшенькин',
+                'en': 'Ksushenkin'
             },
             copyText: {
-                'ru': '96433078361289155632263724'
+                'ru': '96433078361289155632263724',
+                'en': '96433078361289155632263724'
             },
             copy: true,
             redirect: false
         },
         {
             order: {
-                'ru': 3
+                'ru': 3,
+                'en': 3
             },
             displayText: {
                 'ru': 'В Сбер',
+                'en': 'Go to Sber'
             },
             copyText: {
-                'ru': 'http://sberbank.com/sms/shpa/?cs=668341289737&psh=f&did=1760948078147000853'
+                'ru': 'http://sberbank.com/sms/shpa/?cs=668341289737&psh=f&did=1760948078147000853',
+                'en': 'http://sberbank.com/sms/shpa/?cs=668341289737&psh=f&did=1760948078147000853'
             },
             copy: false,
             redirect: true
