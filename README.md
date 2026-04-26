@@ -60,8 +60,8 @@ The web demo at [copypastapp.vercel.app](https://copypastapp.vercel.app)
 - [x] `0.1.1` Concept illustration with external links working in the mobile app
 ---
 - [x] `fix/items-list-add-order` make the order in app respect the order in the attribute
-- [ ] `feat/settings-menu` add settings. to be set on project level
-- [ ] `feat/locale-switch` add locale switch to the settings
+- [x] `feat/settings-menu` add settings. to be set on project level
+- [x] `feat/locale-switch` add locale switch to the settings
 - [ ] `feat/display-modes` add the option to display the copyText and a switch controlling that
 - [ ] `0.1.2`
 ---
